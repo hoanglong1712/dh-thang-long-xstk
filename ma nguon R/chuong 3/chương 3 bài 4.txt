@@ -1,0 +1,84 @@
+
+# chuong 3 bai 4
+
+# tao cac cot
+LuongKhoiDiem = c(6.0, 5.0, 4.5, 3.8, 8.0, 12.0, 4.0, 5.0)
+GioiTinh = c("Nam","Nu","Nam","Nu","Nu","Nam","Nam","Nu")
+XepLoaiTotNghiep = c("K", "K", "TB","K", "G", "G"  , "TB", "TB")
+Tuoi = c(22, 25, 23, 22, 22, 23, 22, 24)
+
+# ghet thanh data frame
+SinhVien = data.frame(LuongKhoiDiem, GioiTinh, XepLoaiTotNghiep, Tuoi)
+
+SinhVien
+
+# lay du lieu nu sinh
+SinhVien[SinhVien$GioiTinh == "Nu",]
+
+# lay du lieu nam sinh
+
+SinhVien[SinhVien$GioiTinh == "Nam" ,]
+
+# lay du lieu nu sinh sau do lay danh sach 
+# luong khoi diem
+SinhVien[SinhVien$GioiTinh == "Nu",]$LuongKhoiDiem
+# $ tuc la cot 
+# [] tu la hang
+
+
+# danh sach tuoi sinh vien nam
+
+SinhVien[SinhVien$GioiTinh == "Nam" ,]$Tuoi
+
+SinhVien[SinhVien$GioiTinh == "Nam" ,]
+
+# ngoai le
+subset(SinhVien[SinhVien$GioiTinh == "Nam" ,], select =  c("LuongKhoiDiem", "Tuoi"))
+
+# lay nhung nguoi co luong khoi diem > 6.0
+subset(SinhVien, LuongKhoiDiem > 6.0)
+
+#lay nhung nguoi co luong cao nhat
+# lay luong cao nhat
+
+subset(SinhVien, LuongKhoiDiem == max(SinhVien$LuongKhoiDiem))
+
+#SinhVien = edit(data.frame(SinhVien))
+
+aRow = c (7.5, "Nam", "G", NA)
+SinhVien = rbind(SinhVien, aRow)
+
+SinhVien
+
+DiemKhoaLuan = c(8, 7.5, 7, 7,9,9.5,8,8,9)
+
+SinhVien = cbind(SinhVien, DiemKhoaLuan)
+
+# lay cac thang do cua moi cot
+# factor
+# 2 3 4 64 2
+# thang do cur moi cot
+factor(SinhVien$LuongKhoiDiem)
+factor(SinhVien$GioiTinh)
+factor(SinhVien$XepLoaiTotNghiep)
+factor(SinhVien$Tuoi)
+factor(SinhVien$DiemKhoaLuan)
+
+SinhVien
+# loai so lieu trong khong
+na.omit(SinhVien)
+# nhan xet : xoa hang "ban ghi" co gia tri trong khong
+
+
+
+
+
+
+
+
+
+
+
+
+
+
