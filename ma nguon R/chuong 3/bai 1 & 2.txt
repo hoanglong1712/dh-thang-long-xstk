@@ -1,0 +1,58 @@
+# tao vector
+TienDT = c(198, 185, 223, 221, 207, 203, 180, 195, 222, 177, 214, 216)
+
+# tong so tien ca nam
+sum(TienDT)
+
+# thang co so tien lon nhat
+which.max(TienDT)
+
+# so tien lon nhat
+TienDT[which.max(TienDT)]
+
+# lay thang co so tien nho nhat
+which.min(TienDT)
+# lay so tien nho nhat tu vetor
+TienDT[which.min(TienDT)]
+
+# lay cac thang co so tien lon hon 200
+which(TienDT > 200)
+# laay chi tiet so tien moi thang
+TienDT[TienDT > 200]
+
+# lay cac thang co so tien nho hon 190
+TienDT[TienDT < 190]
+# dem so thang co so tie nho hon 190
+length(TienDT[TienDT < 190])
+
+TienDT[TienDT >= 190 & TienDT <= 210]
+# [190, 210] [] tuc laf >+ hoac <=
+# neu ngoac tron thi sex la > hoac <
+length(TienDT[TienDT >= 190 & TienDT <= 210])
+
+# tinh  trung binh
+mean(TienDT)
+
+
+# bai 2 chuong 3
+
+# dat duong dan
+# neu tren windows thi copy duong dan 
+# va them \ vao truoc moi \ 
+# J:\\xstk\\sach
+# setwd("J:\\xstk")
+setwd("J:/xstk")
+
+save(TienDT, file = "TienDT.rda")
+
+TienDT[2] = 175
+
+TienDT[13:15] = c(NA, 201, 185)
+
+TienDT
+# na = nothing at all 
+na.omit(TienDT)
+
+mean(na.omit(TienDT))
+
+
