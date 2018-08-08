@@ -1,0 +1,56 @@
+﻿# đặt đường dân tới thư mục chứa file
+setwd("E:\\xstk\\DuLieuThucHanhBaiTapXSTK")
+# lấy file từ ổ đĩa lên RAM
+load("BaiTap6.rda")
+# tìm tên của biến được gắn mặc định bởi file đó 
+print(load("BaiTap6.rda"))
+DL
+
+# câu a, cho biết thang đo của mỗi cột dữ liệu
+factor(DL$GioiTinh)
+factor(DL$Lop)
+factor(DL$HocLuc)
+
+
+# b, cho biết tập dữ liệu có bao nhiêu dòng , cột
+nrow(DL)
+ncol(DL)
+
+# c lay du lieu cot 3
+DL[3]
+
+# d lay du lieu dong 10
+DL[10, ]
+
+# edit(data.frame(DL))
+
+
+# e tinh so hoc sinh nam va nữ
+
+# length(subset(DL, DL$GioiTinh == "Nam"))
+nrow(subset(DL, DL$GioiTinh == "Nam"))
+nrow(subset(DL, GioiTinh == "Nu"))
+
+# f tính tỷ lệ học sinh có mức độ yêu thích thể thao là 4
+# tinh so hoc sinh co muc yeu the thao = 4
+ytt = nrow(subset(DL, DL$TheThao == 4))
+# lay so hoc sinh
+shs = nrow(DL)
+# tinh ty le
+(ytt / shs ) * 100
+
+# tinh tỷ lệ nam yêu thể thao là 4
+# lấy tập dữ liệu chỉ chứa các dòng về Nam trong DL
+dl_nam = subset(DL, DL$GioiTinh == "Nam")
+# tính số nam yêu thể thao = 4
+ytt_nam = nrow(subset(dl_nam, dl_nam$TheThao == 4)) 
+# tính số nam trong ma trận dữ liệu chỉ chứa các dòng mà giới tính = Nam
+sn = nrow(dl_nam)
+# tinh tỷ lệ %
+(ytt_nam / sn) * 100
+
+# tinh ty le nu
+dl_nu = subset(DL, DL$GioiTinh == "Nu")
+ytt_nu = nrow(subset(dl_nu, dl_nu$TheThao == 4)) 
+snu = nrow(dl_nu)
+(ytt_nu / snu) * 100
