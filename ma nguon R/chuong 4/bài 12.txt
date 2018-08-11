@@ -1,0 +1,94 @@
+﻿
+# bai 12 
+
+# doc file du lieu ten la SoLieu.csv
+
+# đặt đường dân tới thư mục chứa file
+setwd("E:\\xstk\\DuLieuThucHanhBaiTapXSTK")
+
+# doc file SoLieu.csv
+solieu = read.csv("SoLieu.csv")
+# kiem tra
+solieu
+# dung ham attach de giam thieu so lan go solieu$....
+attach(solieu)
+
+# kiem tra cac cot
+# a. trong nhom dang duoc dieu tra co bao nhieu nam va co bao nhieu nguoi song o thanh pho
+
+# co bao nhieu nguoi song o thanh pho
+# ky thuat chuong 3
+length(KhuVuc[KhuVuc == "ThanhPho"])
+# ky thuat chuong 4
+table(KhuVuc)["ThanhPho"]
+
+# co bao nhieu nam
+GioiTinh
+table(GioiTinh)["Nam"]
+
+# b, tinh so nam song o hai dao va so nu song o nong thon
+# chung ta can tao bang 2 chieu
+# trong trang 53 
+
+# tao bang
+gt_kv = table(GioiTinh, KhuVuc)
+# lay so nam song o hai dao va so nu o nong thon
+gt_kv["Nam", "HaiDao"] + gt_kv["Nu", "NongThon"]
+
+# c, trong so nu duoc dieu tra tinh ty le nu song o mien nui va thanh pho
+gt_kv["Nu", "MienNui"] + gt_kv["Nu", "ThanhPho"]
+sum(gt_kv["Nu" ,])
+# ty le can tim
+(gt_kv["Nu", "MienNui"] + gt_kv["Nu", "ThanhPho"]) / sum(gt_kv["Nu" ,]) * 100
+
+# d. phan to cot du lieu ve tuoi thanh cac to voi diem chia 20, 30, 40, 50, 60 70, 80
+# va tinh ty le nhung nguoi duoc dieu tra khong qua 50
+c_tuoi = cut(Tuoi, breaks =  seq(20, 80, 10), right = FALSE)
+t_tuoi = table(c_tuoi)
+t_tuoi
+p_tuoi = prop.table(t_tuoi)
+p_tuoi
+# ty le can tim
+cumsum(p_tuoi)["[40,50)"] * 100 
+
+# 1 cach lam khac ma khong chia 20, 30, 40, 50, 60 70, 80
+# chi quan tam den ket qua ty le nhung nguoi duoc dieu tra khong qua 50
+c_tuoi = cut(Tuoi, breaks =  c(20, 50, 80), right = FALSE)
+t_tuoi = table(c_tuoi)
+t_tuoi
+p_tuoi = prop.table(t_tuoi)
+p_tuoi
+# ty le can tim
+cumsum(p_tuoi)["[20,50)"] * 100 
+
+# e. phan to du lieu cot thu nhap voi cac diem chia 20, 40, 60, 80, 100
+# ThuNhap la 1 cot cua bang solieu duoc doc tu file SoLieu.csv
+# do chung ta dung ham attach tren bien so lieu nen co the goi cot ThuNhap truc tiep
+# khong phai thong qua solieu$ThuNhap
+c_thunhap = cut(ThuNhap, seq(20, 100, 20))
+c_thunhap
+
+# tinh ty le nhung nguoi phai dong thue thu nhap 
+# biet rang nguoi chiuy thue phai co thu nhap lon hon 60 trieu 1 nam 
+t_thunhap = table(c_thunhap)
+t_thunhap
+
+t_tam = c(t_thunhap["(60,80]"], t_thunhap["(80,100]"], t_thunhap["(40,60]"], t_thunhap["(20,40]"] )
+prop.table(t_tam)
+# ty le can tim
+cumsum(prop.table(t_tam))["(80,100]"] * 100
+
+# tinh ty le nhung nguoi co thu nhap hon 80 trieu va nam trong khoang tuoi (40,50]
+# cat theo tuoi
+c_tuoi = cut(Tuoi, breaks =  seq(20, 80, 10), right = TRUE)
+c_tuoi
+c_thunhap = cut(ThuNhap, seq(20, 100, 20))
+c_thunhap
+# lap bang tan so cheo
+t_t_tn = table(c_tuoi, c_thunhap)
+t_t_tn
+
+# lay gia tri can tim
+t_t_tn["(40,50]", "(80,100]"]
+# ty le can tim
+prop.table(t_t_tn)["(40,50]", "(80,100]"] * 100
