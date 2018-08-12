@@ -1,0 +1,71 @@
+﻿
+# bai 13  
+
+# hay phan to du lieu ve diem toan nam 2008 
+# trong file DiemToanKhoiD_2008.rda voi so to thich hop va 
+# lap bang tan so
+
+# đặt đường dân tới thư mục chứa file
+setwd("E:\\xstk\\DuLieuThucHanhBaiTapXSTK")
+load("DiemToanKhoiD_2008.rda")
+print(load("DiemToanKhoiD_2008.rda"))
+KhoiDmoi
+c_diem = cut(KhoiDmoi, breaks =  seq(0, 10, 0.25))
+table(c_diem)
+
+
+# bai 14
+
+# doc du lieu tu file DiemThi.xls
+# R khong ho tro doc file excel
+# thuc ra la co ho tro nhung ma R core khong ho tro
+# chung ta phai the mthu vien vao de lam viec do
+# nhung ma giao trinh khong huong dan nen chac chan khi thi se khong co
+# nen minh huong dan theo cach ghi trong giao trinh trong chuong 3
+# chung ta se mo file DiemThi.xls bang MS Excel sau do luu file duoi dang
+# DiemThi.csv
+dl = read.csv("DiemThi.csv")
+dl
+# a. tinh so do huong tam: trung binh cong, trung vi, mode, neu y nghia
+# trung binh cong
+mean(dl$DiemThi)
+median(dl$DiemThi)
+
+# mode 
+t_diemthi =  table(dl$DiemThi)
+wh_mode = which(t_diemthi == max(t_diemthi))
+# vay mode la 47 va 60
+wh_mode
+
+# b, tinh cac dai luong mo ta do phan bo cua tap du lieu nhu 
+# tu phan vi
+summary(dl$DiemThi)
+# phan vi thu 10, 60, 90 
+quantile(dl$DiemThi, c(0.1, 0.6, 0.9))
+
+# neu y nghia
+
+# c tinh khoang bien thien, do trai giua , phuong sai, do lech chuan
+
+sm = summary(dl$DiemThi)
+sm
+# do trai giua
+sm["3rd Qu."] - sm["1st Qu."]
+
+# khoang bien thien
+sm["Max."] - sm["Min."]
+
+# phuong sai
+sd(dl$DiemThi)
+
+# do lech chuan
+var(dl$DiemThi)
+
+# ve bieu do hop va rau
+boxplot(dl$DiemThi)
+
+# nhan xet
+# diem thi toan cua khoi D, pho bien trong khoang 37 den 61.5 
+# diem cao nhat la 100, thap nhat la 19
+# 
+

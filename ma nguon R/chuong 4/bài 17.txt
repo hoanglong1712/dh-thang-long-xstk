@@ -1,0 +1,30 @@
+
+# dat duong dan toi thu muc chua file
+setwd("E:\\xstk\\DuLieuThucHanhBaiTapXSTK")
+
+dj = read.csv("ChiSoDowJones.csv")
+dj
+
+# lap bieu do than va la
+
+stem(dj$DowJones)  
+
+dj$DowJones
+# nhan xet
+# chi so dow jones tap trung quanh khoang 2300, 2600 va 2900
+# hiem khi chi so DJ nam trong khoang 220, 2500 va 2800
+
+
+# b bieu do hop va rau
+
+boxplot(dj$DowJones, horizontal = TRUE)
+
+# nhan xet
+# chi so DJ tap trung chu yeu trong khoang lon hon 2400
+# va nho hon 2900
+# trung vi gan nhu nam giua hop, nen cac chi so
+# phan phoi tuong doi deu trong khoang [2400, 2900]
+
+# c. nhan xet ve tinh doi xung hay nghieng trai nghieng phai
+# cua tap du lieu thong qua bieu do than la va bieu do hop va rau
+# tap du lieu co xu huong nghieng trai

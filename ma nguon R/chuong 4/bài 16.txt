@@ -1,0 +1,87 @@
+﻿
+# bai 16
+
+# doc file ChiSoIQ.rda
+
+# đat duong dan toi thu muc chua file
+setwd("E:\\xstk\\DuLieuThucHanhBaiTapXSTK")
+
+# lay du lieu len ram
+load("ChiSoIQ.rda")
+print(load("ChiSoIQ.rda"))
+
+# a. lap ban tan so cua  tap du lieu tran bang cach phan du lieu thanh cac
+# to co khoang cach la 10
+
+min(ChiSoIQ)
+max(ChiSoIQ)
+# 50 140
+# phan to
+c_chiso = cut(ChiSoIQ, breaks = seq(50, 140, 10))
+c_chiso
+# lap bang tan so
+table(c_chiso)
+
+# b. ve bieu do phan phoi tan so va da giac tan so tuong ung voi bang tan so tren
+# la breaks tuong ung
+
+# bieu do phan phoi tan so
+bd = hist(ChiSoIQ, breaks = seq(50, 140, 10), 
+          main = "bieu do phan phoi tan so", xlab = "Chi so IQ", 
+          ylab = "Muc Pho Bien")
+
+# da giac tan so
+
+hoanh_do = c(min(bd$breaks), bd$mids, max(bd$breaks))
+tung_do = c(0, bd$counts, 0)
+# da giac
+plot(hoanh_do, tung_do, type = "b")
+
+# ve 2 bieu do tren cung 1 hinh
+
+hist(ChiSoIQ, breaks = seq(50, 140, 10), 
+     main = "bieu do phan phoi tan so", xlab = "Chi so IQ", 
+     ylab = "Muc Pho Bien")
+lines(hoanh_do, tung_do, col = "red")
+
+
+# d dua vao hinh dang bieu do de nhan xet hinh dang phan phoi chuan
+# pha phoi chuan thi cac chi so tap trun o giua va giam dan
+# ve 2 bien 
+
+
+# f tinh ty le % nhung gia tri cua tap du lieu roi vao khoang
+
+sx = sd(ChiSoIQ)
+sx 
+
+x_ = mean(ChiSoIQ)
+x_
+
+# [x_ - sx, x_ + sx]
+c_chiso = cut(ChiSoIQ, c(min(ChiSoIQ), x_ - sx, x_ + sx, max(ChiSoIQ)))
+prop.table(table(c_chiso)) * 100
+
+prop.table(table(c_chiso))["(83.8,116]"]  * 100
+
+# [x_ - 2sx, x_ + 2sx]
+c_chiso = cut(ChiSoIQ, c(min(ChiSoIQ), x_ - 2*sx, x_ + 2*sx, max(ChiSoIQ)))
+prop.table(table(c_chiso)) * 100
+
+prop.table(table(c_chiso))["(67.7,132]"]  * 100
+
+
+# [x_ - 3sx, x_ + 3sx]
+c_chiso = cut(ChiSoIQ, c(min(ChiSoIQ), x_ - 3*sx, x_ + 3*sx, max(ChiSoIQ)))
+prop.table(table(c_chiso)) * 100
+
+prop.table(table(c_chiso))["(56,136]"] *100
+
+# so sanh voi thuc nghiem
+# https://www.slideshare.net/tqphi/bai-02-thong-ke-mo-ta
+# thuc nghiem 68.3 % so do nam giua [x_ - sx, x_ + sx]
+# tinh toan la 67.3% => gan tuong duong voi thuc nghiem
+# thuc nghiem 95.5 % so do nam giua [x_ - 2sx, x_ + 2sx]
+# tinh toan la 95.9799% => cao voi thuc nghiem 
+# thuc nghiem 99.7 % so do nam giua [x_ - 3sx, x_ + 3sx]
+# tinh toan 99.5% => thap hơn so voi thuc nghiem 
