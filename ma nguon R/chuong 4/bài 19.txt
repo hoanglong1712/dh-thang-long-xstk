@@ -1,0 +1,60 @@
+
+#bai 19
+
+# dat duong dan den thu muc file do
+setwd("E:\\xstk\\DuLieuThucHanhBaiTapXSTK")
+
+sl = read.csv("SoLieu.csv")
+sl
+
+# ve bieu do than la cho cot tuoi, nhan xet
+stem(sl$Tuoi)
+
+# b ve bieu do phan phoi tan so voi do rong la 10 cho
+# cot thu nhap
+
+min(sl$ThuNhap)
+max(sl$ThuNhap)
+hist(sl$ThuNhap, 
+     breaks = seq(20, 100, 10), 
+     ylim = c(0, 40),
+     labels = TRUE,
+     col = rainbow(8),
+     main = "Bieu do phan phoi tan so thu nhap",
+     xlab = "Muc Thu Nhap",
+     ylab = "So luong Nguoi")
+
+
+# c. ve bieu do thanh phan phoi gioi tinh theo khu vuc song
+
+
+data= table(sl$GioiTinh, sl$KhuVuc)
+barplot(data, beside = TRUE,
+        col = rainbow(2), 
+        legend = rownames(data),
+        ylim = c(0, 40)
+        )
+
+# e. chon 1 trong 3 dai luong mean, median va mode 
+# de mieu ta do tap trung cuar moi cot du lieu
+
+# theo kinh nghiem thi
+# voi nhung cot co kieu so
+# thi nguoi ta hay dung do lech chuan
+# nhung ma o day hoi vef mean, media va mode
+# nen chung ta co the tra loi nhu sau
+
+# cot Thu Nhap: median laf gia tri phu hop
+# cot Tuoi cung la median
+# cot gioi tinh do chi co 2 gia tri nen mode la phu hop hon ca
+
+summary(sl$Tuoi)
+summary(sl$ThuNhap)
+table(sl$GioiTinh)[which(table(sl$GioiTinh) == max(table(sl$GioiTinh)))]
+
+
+
+
+
+
+
