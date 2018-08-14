@@ -1,0 +1,96 @@
+
+#bai 20
+
+# dat duong dan den thu muc file do
+setwd("E:\\xstk\\DuLieuThucHanhBaiTapXSTK")
+
+# R core khong doc duoc file xls
+# do do chung ta phai luu file xls duoi dang csv bang Excel
+
+# doc file csv
+tn = read.csv("ThuNhap.csv")
+tn
+# a tinh so do huong tam
+# trung binh cong, trung vi
+# trung binh cong
+mean(tn$ThuNhap)
+# trung vi
+median(tn$ThuNhap)
+
+summary(tn$ThuNhap)
+summary(tn$ThuNhap)["Mean"]
+summary(tn$ThuNhap)["Median"]
+
+# mode la so do xuat hien nhieu nhat trong mau
+t_thunhap = table(tn$ThuNhap)
+t_thunhap
+
+which(t_thunhap == max(t_thunhap))
+
+# 47 la mode cua mau 
+
+
+# b, bieu do than la
+stem(tn$ThuNhap)
+# nhan xet
+# hang 4 la dai nhat
+# dieu do phu hop vois du doan trung vi nam trong hang nay
+# 
+
+
+# c tinh ty le % nhun gia tri du lieu roi vao khoang 
+# [x_ - 2sx, x_ + 2sx] # [x_ - 3sx, x_ + 3sx], # [x_ - sx, x_ + sx]
+
+boxplot(tn$ThuNhap, horizontal = TRUE)
+x_ = mean(tn$ThuNhap)
+sx = sd(tn$ThuNhap) # standard deviation
+
+c_thunhap = cut(tn$ThuNhap, breaks = c(min(tn$ThuNhap) - 1, 
+                           x_ -  sx, x_ + sx
+                           , max(tn$ThuNhap) + 1 ))
+#  (20,32.4] (32.4,76.9] (76.9,105]
+c_thunhap
+tn$ThuNhap
+t_c_thunhap = table(c_thunhap)
+
+# ty le % gia tri cua tap du lieu roi vao khoang [x_ - sx, x_ + sx]
+prop.table(t_c_thunhap) * 100
+prop.table(t_c_thunhap)["(32.4,76.9]"] * 100
+
+# [x_ - 2sx, x_ + 2sx]
+c_thunhap = cut(tn$ThuNhap, breaks = c(min(tn$ThuNhap) - 1, 
+                                       x_ - 2 * sx, x_ + 2* sx
+                                       , max(tn$ThuNhap) + 1 ))
+
+t_c_thunhap = table(c_thunhap)
+
+# ty le % gia tri cua tap du lieu roi vao khoang [x_ - 2sx, x_ + 2sx]
+prop.table(t_c_thunhap) * 100
+prop.table(t_c_thunhap)["(19,99.2]"] * 100
+
+
+# [x_ - 3sx, x_ + 3sx]
+
+# ta thay x_ - 3 * sx < 0
+# va x_ + 3 * sx > max(gia tri trong mau)
+# do do ty le % trong khoang can tim la 100%
+
+# [x_ - 4sx, x_ + 4sx]
+# ma khoang [x_ - 3sx, x_ + 3sx] nam trong khoang [x_ - 4sx, x_ + 4sx]
+# cho nen [x_ - 4sx, x_ + 4sx] chua 1005 cac gia tri
+
+
+# so sanh chebyshev
+# [x_ - 3sx, x_ + 3sx] chua it nhat 89% so do
+# [x_ - 2sx, x_ + 2sx] chua it nhat 75% so do
+# [x_ - sx, x_ + sx] chua it nhat 0% so do
+
+
+# bai 21
+
+
+
+
+
+
+
