@@ -1,0 +1,31 @@
+# bai 18
+
+
+# nhap du lieu
+al = c(146.4, 102.6, 73.7, 64.5, 14.8, 14.5)
+# dat ten cho vecto du lieu
+names(al) = c("R&B", "Rock", "Rap", "Country", "Classic", "Latin")
+al
+
+# a, lap bieu do thanh mo ta phan phoi ve so luong album duoc ban ra cua tung
+# the loai va cho nhan xet
+
+barplot(al,
+        col = rainbow(length(al)),
+        main = "Bieu Do Thanh Mo Ta Phan Phoi",
+        ylim = c(0, 160)
+        )
+
+# nhan xet:
+# nhac R&B ban duoc nhieu dia hon
+# so nguoi mua nhac co dien voi latin rat it
+
+# b lap bieu do tron mo ta so luong album
+
+pie(al, paste(names(al), ": ", al)
+    , col = rainbow(length(al)),
+    main = "Bieu Do Tron Mo Ta Phan Phoi",)
+
+# c so sanh thong tin co duoc khi dung 
+# 2 loai bieu do
+# 
