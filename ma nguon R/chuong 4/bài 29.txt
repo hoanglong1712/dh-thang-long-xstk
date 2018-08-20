@@ -1,0 +1,130 @@
+﻿Chào mọi người, chúng ta bắt đầu với bài 29 chương 5
+Bài 29 nêu 1 loạt biến cố sau đó yêu cầu chúng ta tính xác suất 
+Nếu P(E) = 0.5, P(F) = 0.6 và P(G) = 0.7
+Và viết biểu diễn các biến cố qua E F G
+Lưu ý. E, F, G là các biến cố độc lập
+
+P(AB) = P(A) . P(B) khi A và B độc lập
+
+
+Chúng ta bắt đầu 
+1.Chỉ có E xảy ra
+Ở đây chúng ta dùng tích các biến cố EFG 
+Để đảm bảo rằng E sẽ diễn ra còn F và G không thể diễn ra
+
+P(EFG) = P(E) * P(F) * P(G) = P(E) * ( 1- P(F)) * ( 1 - P(G))
+
+Lưu ý rằng G là biến cố đối của G
+Nếu xác suất của G là 0.7 thì  P(G) = ( 1 - P(G)) = 1 - 0,7 = 0.3
+
+=> P(EFG) = 0.5 * 0.4 * 0.3
+
+2.E và G xảy ra nhưng F không xảy ra 
+Ở đây ta cũng dùng tích các biến cố để đảm bảo mọi biến cố xảy ra theo đúng ý ta muốn
+EFG 
+P(EFG) = P(E) * P(F) * P(G) = P(E) * P(F) * ( 1 - P(G)) = 0.5 * 0.6 * 0.3 
+
+3.Ít nhất 2 trong 3 biến cố xảy ra
+Ở đây chúng ta cần áp dụng tổng các biến cố vì có các trường hợp 2 biến cố có trường hơp 3 biến cố
+EFG U EFG U EFG U EFG
+EFG U EFG U EFG : có 2 biến cố xảy ra
+EFG : cả 3 biến cố đều xảy ra
+
+P(E) = 0.5, P(F) = 0.6 và P(G) = 0.7
+
+P(EFG U EFG U EFG U EFG) = P(EFG) + P(EFG) + P(EFG) + P(EFG)
+= 0.5 * 0.6 * (1 - 0.7) + 0.5 * (1 - 0.6) * 0.7 + (1 - 0.5) * 0.6 * 0.7 + 0.5 * 0.6 * 0.7
+
+Các bạn tự tính toán phần còn lại nhé
+
+4.Ít nhất 1 trong 3 biến cố xảy ra
+
+Ở đây chúng ta có nhận xét là phát biểu “Ít nhất 1 trong 3 biến cố xảy ra” có thể giúp
+Chúng ta giảm khối lượng tính toán so với câu 3
+Biến cố đối của “Ít nhất 1 trong 3 biến cố xảy ra” là “không có biến cố nào xảy ra”
+Tức là 
+P(“Ít nhất 1 trong 3 biến cố xảy ra”) = 1 - P(“không có biến cố nào xảy ra”)
+
+Chúng ta đi tính P(“không có biến cố nào xảy ra”)
+Khi đó biểu diễn của biến cố sẽ là 
+EFG 
+
+P(E) = 0.5, P(F) = 0.6 và P(G) = 0.7
+
+P(EFG) = P(E) * P(F) * P(G) = (1 - 0.5) * (1 - 0.6) * (1 - 0.7) = 0.5 * 0.4 * 0.3 
+
+P(“Ít nhất 1 trong 3 biến cố xảy ra”) = 1 - P(“không có biến cố nào xảy ra”)
+= 1 - P(EFG)
+5.Cả 3 biến cố xảy ra
+Đó là EFG 
+P(EFG) = P(E) * P(F) * P(G) = 0.5 * 0.6 * 0.7
+
+6.Không có biến cố nào xảy ra
+Chúng ta đã tính toán ở trên, mình sẽ copy lại đoạn đó 
+
+Khi đó biểu diễn của biến cố sẽ là 
+EFG 
+
+P(E) = 0.5, P(F) = 0.6 và P(G) = 0.7
+
+P(EFG) = P(E) * P(F) * P(G) = (1 - 0.5) * (1 - 0.6) * (1 - 0.7) = 0.5 * 0.4 * 0.3 
+
+7.Nhiều nhất 1 trong 3 biến cố xảy ra
+Chúng ta sủ dụng tổng các biến cố trong trường hợp này vì có 4 khả năng thỏa mãn “Nhiều nhất 1 trong 3 biến cố xảy ra” 
+EFG U EFG U EFG U EFG 
+EFG : không có biến cố nào xảy ra
+EFG U EFG U EFG : có 1 biến cố xảy ra
+
+P (EFG U EFG U EFG U EFG) = P (EFG) + P (EFG) + P (EFG) + P (EFG)
+= P (E) . P(F) . P(G) 
++ P (E) . P(F) . P(G) 
++ P (E) . P(F) . P(G) 
++ P (E) . P(F) . P(G)
+= (1 - 0.5) * (1 - 0.6) * (1 - 0.7) 
++ (1 - 0.5) * 0.6 * 0.7
++ 0.5 * (1 - 0.6) * 0.7
++ 0.5 * 0.6 * (1 - 0.7)
+
+Kết quả cụ thể thì mọi người tự bấm máy nhé
+
+8.Đúng 2 trong 3 biến cố xảy ra
+Ta có tổng các biến cố như sau
+EFG U EFG U EFG
+P(EFG U EFG U EFG) = P (EFG) + P (EFG) + P (EFG)
+= P (E) . P(F) . P(G) 
++ P (E) . P(F) . P(G) 
++ P (E) . P(F) . P(G)
+= (1 - 0.5) * 0.6 * 0.7
++ 0.5 * (1 - 0.6) * 0.7
++ 0.5 * 0.6 * (1 - 0.7)
+
+9.Nhiều nhất cả 3 biến cố đều xảy ra
+Câu hỏi này tương đối đặc biệt
+Vì nó có nghĩa là toàn bộ các trường hợp trong mẫu 
+Và xác suât P của nó là 1,
+Và nếu liệt kê thi dài lắm
+À thôi viết luôn vì có thể có người chưa đoán ra
+EFG : “ 3 biến cố đều xảy ra”
+EFG U EFG U EFG : “ có 2 biến cố xảy ra”
+EFG U EFG U EFG : “có 1 biến cố xảy ra” 
+EFG : “không có biến cố nào xảy ra”
+
+Đó là bài 29 chương 5, nếu các bạn có câu hỏi gì thì cứ đặt câu hỏi vào phần bình luận của video
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`
